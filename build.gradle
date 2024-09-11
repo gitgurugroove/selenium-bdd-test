@@ -7,6 +7,7 @@ version = '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
+    jcenter()  // Add JCenter as a backup repository
 }
 
 dependencies {
@@ -14,12 +15,17 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter'
     testImplementation 'io.github.bonigarcia:webdrivermanager:5.0.3'
 
+    // Serenity Core for BDD Reporting
+    testImplementation 'net.serenity-bdd:serenity-core:4.1.10'
+    implementation group: 'net.serenity-bdd', name: 'serenity-cucumber', version: '4.1.10'
+    testImplementation 'net.serenity-bdd:serenity-junit5:4.1.10'
+
     // Selenium WebDriver
     testImplementation 'org.seleniumhq.selenium:selenium-java:4.4.0'
 
     // Cucumber JVM
-    testImplementation 'io.cucumber:cucumber-java:7.0.0'
-    testImplementation 'io.cucumber:cucumber-junit:7.0.0'
+    testImplementation 'io.cucumber:cucumber-java:7.8.1'
+    testImplementation 'io.cucumber:cucumber-junit:7.8.1'
 
     // JUnit for test execution
     testImplementation 'junit:junit:4.13.2'
@@ -27,5 +33,18 @@ dependencies {
 
 test {
     useJUnitPlatform()
-    useJUnit()
+}
+// Define existing tasks for clearing and aggregating reports
+task clearReports(type: Delete) {
+    delete fileTree(dir: "target/site/serenity")
+}
+
+task bdd {
+    group = 'verification'
+    description = 'Cleans up reports, aggregates them, and performs BDD-related tasks'
+    dependsOn 'clean', 'test', 'aggregate'
+
+    doLast {
+        println 'BDD tasks completed: Reports cleared and aggregated.'
+    }
 }
