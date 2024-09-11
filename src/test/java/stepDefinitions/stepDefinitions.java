@@ -4,8 +4,11 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.junit.After;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -18,7 +21,7 @@ public class stepDefinitions {
         // Set the path to the chromedriver executable
 //        WebDriverManager.firefoxdriver().setup();  // Use WebDriverManager to setup GeckoDriver
 //        driver = new FirefoxDriver();
-        System.setProperty("webdriver.chrome.driver","F:\\Dev Softwares\\chromedriver-win32\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "F:\\Dev Softwares\\chromedriver-win32\\chromedriver.exe");
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
         driver = new ChromeDriver(options);
@@ -48,7 +51,29 @@ public class stepDefinitions {
         } else {
             System.out.println("Test Failed !");
         }
-        driver.quit();
+
+    }
+
+    @Then("I should see a message saying {string}")
+    public void i_should_see_a_message_saying_or(String string) {
+        WebElement successMessgae = driver.findElement(By.className("post-title"));
+        String message = successMessgae.getText();
+        Assert.assertTrue("Expected Message Not found on the Login Page", message.contains("Logged In Successfully"));
+    }
+
+    @Then("I should see the Log out button")
+    public void i_should_see_the_log_out_button() {
+        WebElement logoutButton = driver.findElement(By.xpath("//a[text()='Log out']"));
+        Assert.assertTrue("LogOut Button is not displayed", logoutButton.isDisplayed());
+
+    }
+
+    @After
+    public void tearDown() {
+        if (driver != null) {
+            driver.quit();
+        }
+
     }
 }
 

@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="10.816">
-    <testcase classname="Test login functionality" name="Successful login with Valid Credentials" time="10.381">
+<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="10.792">
+    <testcase classname="Test login functionality" name="Successful login with Valid Credentials" time="10.118">
         <system-out><![CDATA[Given User navigate to the login page.......................................passed
 When User enters valid credentials..........................................passed
 Then User should be on the login page.......................................passed
+Then I should see a message saying "Logged In Successfully".................passed
+And I should see the Log out button.........................................passed
 ]]></system-out>
     </testcase>
 </testsuite>

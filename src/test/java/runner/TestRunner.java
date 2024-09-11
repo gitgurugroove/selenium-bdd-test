@@ -13,7 +13,7 @@ import org.junit.runner.RunWith;
                 "json:target/cucumber-reports.json",
                 "junit:target/cucumber-reports.xml"},
         monochrome = true,                          // Makes console output readable
-        tags = "@SmokeTest",                        // Tags to include in the test run
+        tags = "@PositiveTest",                        // Tags to include in the test run
         dryRun = false                          // Set to true to check mappings without executing the tests
 )
 public class TestRunner {
