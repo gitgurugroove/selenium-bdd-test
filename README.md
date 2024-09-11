@@ -25,6 +25,7 @@ The test is performed on the following URL:
 - **Gradle**: Build tool for compiling and running tests.
 - **JUnit**: Test runner for executing the Cucumber scenarios.
 
+
 ## Setup and Execution
 
 ### Prerequisites
