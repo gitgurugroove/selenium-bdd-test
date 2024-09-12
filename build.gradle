@@ -1,12 +1,26 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        gradlePluginPortal() // For Gradle plugins
+    }
+    dependencies {
+        classpath "net.serenity-bdd:serenity-gradle-plugin:4.1.10"
+    }
+}
+
+
 plugins {
     id 'java'
+    id 'net.serenity-bdd.serenity-gradle-plugin' version '4.1.10'
 }
+
 
 group = 'org.example'
 version = '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
+    gradlePluginPortal()
     jcenter()  // Add JCenter as a backup repository
 }
 
@@ -16,10 +30,9 @@ dependencies {
     testImplementation 'io.github.bonigarcia:webdrivermanager:5.0.3'
 
     // Serenity Core for BDD Reporting
-    testImplementation 'net.serenity-bdd:serenity-core:4.1.10'
-    implementation group: 'net.serenity-bdd', name: 'serenity-cucumber', version: '4.1.10'
-    testImplementation 'net.serenity-bdd:serenity-junit5:4.1.10'
-
+    testImplementation "net.serenity-bdd:serenity-core:4.1.10"
+    testImplementation "net.serenity-bdd:serenity-junit:4.1.10"
+    testImplementation "net.serenity-bdd:serenity-cucumber:4.1.10"
     // Selenium WebDriver
     testImplementation 'org.seleniumhq.selenium:selenium-java:4.4.0'
 
@@ -34,17 +47,10 @@ dependencies {
 test {
     useJUnitPlatform()
 }
-// Define existing tasks for clearing and aggregating reports
-task clearReports(type: Delete) {
-    delete fileTree(dir: "target/site/serenity")
-}
 
-task bdd {
-    group = 'verification'
-    description = 'Cleans up reports, aggregates them, and performs BDD-related tasks'
-    dependsOn 'clean', 'test', 'aggregate'
 
-    doLast {
-        println 'BDD tasks completed: Reports cleared and aggregated.'
-    }
-}
+
+
+
+
+

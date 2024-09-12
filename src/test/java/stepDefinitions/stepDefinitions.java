@@ -21,7 +21,7 @@ public class stepDefinitions {
         // Set the path to the chromedriver executable
 //        WebDriverManager.firefoxdriver().setup();  // Use WebDriverManager to setup GeckoDriver
 //        driver = new FirefoxDriver();
-        System.setProperty("webdriver.chrome.driver", "F:\\Dev Softwares\\chromedriver-win32\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
         driver = new ChromeDriver(options);
