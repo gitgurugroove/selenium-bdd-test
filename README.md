@@ -9,6 +9,7 @@ The purpose of this test suite is to provide a ready-made automation framework f
 The test is performed on the following URL:
 
 - **[Practice Test Automation Login Page](https://practicetestautomation.com/practice-test-login/)**
+- **[Practice OpenCart Demo Website](https://demo.opencart.com/en-gb?route=common/home)**
 
 ## Key Features
 - **BDD (Behavior-Driven Development)**: Tests are written using Cucumber and Gherkin syntax to ensure easy readability and collaboration between developers and non-developers.
