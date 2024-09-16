@@ -8,7 +8,6 @@ buildscript {
     }
 }
 
-
 plugins {
     id 'java'
     id 'net.serenity-bdd.serenity-gradle-plugin' version '4.1.10'
@@ -34,11 +33,20 @@ dependencies {
     testImplementation "net.serenity-bdd:serenity-junit:4.1.10"
     testImplementation "net.serenity-bdd:serenity-cucumber:4.1.10"
     // Selenium WebDriver
-    testImplementation 'org.seleniumhq.selenium:selenium-java:4.4.0'
+    testImplementation 'org.seleniumhq.selenium:selenium-java:4.9.1'
+    testImplementation 'org.seleniumhq.selenium:selenium-support:4.9.1'
+    
+    //ScreenPlay depedencies
+    testImplementation 'net.serenity-bdd:serenity-screenplay:4.1.10'
+    testImplementation 'net.serenity-bdd:serenity-screenplay-webdriver:4.1.10'
 
     // Cucumber JVM
     testImplementation 'io.cucumber:cucumber-java:7.8.1'
     testImplementation 'io.cucumber:cucumber-junit:7.8.1'
+
+    // Other necessary libraries
+    testImplementation 'org.slf4j:slf4j-simple:2.0.5'  // Simple Logging Facade
+
 
     // JUnit for test execution
     testImplementation 'junit:junit:4.13.2'
